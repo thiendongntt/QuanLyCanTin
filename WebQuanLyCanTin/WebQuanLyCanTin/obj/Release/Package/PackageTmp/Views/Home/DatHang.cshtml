@@ -1,0 +1,164 @@
+﻿@using WebQuanLyCanTin.Models
+
+@{
+    ViewBag.Title = "DatHang";
+}
+<style>
+    .anClass {
+        display: none;
+    }
+    #HinhThucThanhToan {
+        margin: 0px 8px;
+        color: red;
+    }
+</style>
+@if (ViewBag.TongSanPham > 0)
+{
+    <div class="columns-container">
+        <div class="container" id="columns">
+            <!-- page heading-->
+            <h2 class="page-heading">
+                <span class="page-heading-title">Đặt hàng</span>
+            </h2>
+            <!-- ../page heading-->
+            <div class="page-content page-order">
+                <div class="panel-group checkout-page accordion scrollable" id="checkout-page">
+
+                    <div id="confirm" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#checkout-page" href="#confirm-content" class="accordion-toggle">
+                                    Xem lại đơn hàng
+                                </a>
+                            </h2>
+                        </div>
+                        <div >
+                            <div class="panel-body row">
+                                <div class="col-md-12 clearfix">
+                                    <div class="table-wrapper-responsive">
+                                        <table class="table table-bordered table-responsive cart_summary">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên sản phẩm</th>
+                                                    <th>Hình ảnh</th>
+                                                    <th>Đơn giá </th>
+                                                    <th>Số lượng</th>
+                                                    <th>Thành tiền</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="show-list-order">
+                                                @foreach (GioHang sanPham in (List<GioHang>)Session["GioHang"])
+                                                {
+                                                    <tr>
+
+                                                        <th>@sanPham.name</th>
+                                                        <th><img src="@Url.Content(sanPham.image)" style="width:150px; height:150px;" /></th>
+                                                        <th>@sanPham.price</th>
+                                                        <th>@sanPham.quantity</th>
+                                                        <th>@(sanPham.quantity * sanPham.price)</th>
+                                                        @*<th class="action"> <a href="@Url.Action("XoaGioHang", "Home", new {maSP = sanPham.SanPham.IDSP})">*@
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="2" rowspan="3"></td>
+                                                    <td colspan="3"><strong style="margin-right: 150px;">Tổng tiền: @ViewBag.TongTien</strong></td>
+                                                    @*<td colspan="2" id="total_price" style="font-weight: bold; color: #e84d1c; font-size: 20px;">@ViewBag.TongTien</td>*@
+                                                </tr>
+
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BEGIN PAYMENT ADDRESS -->
+                    <div id="payment-address" class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#checkout-page" href="#payment-address-content" class="accordion-toggle">
+                                    Phương thức thanh toán
+                                </a>
+                            </h2>
+
+                        </div>
+                        @{
+                            WebQuanLyCanTin.Models.KHACHHANG kh = (WebQuanLyCanTin.Models.KHACHHANG)Session["TaiKhoan"];
+                        }
+                    <div class="col-md-7">
+                        @using (Html.BeginForm())
+                        {
+                            <div class="d-flex" style="display: flex; margin: 10px; font-size: 18px;">
+                                <label style="margin-right: 10px;"> Phòng nhận hàng: </label>
+                                <input type="text" name="phongNhanHang" id="phongNhanHang" style="border: 1px solid; border-radius: 10px;" required />
+                                <span style="color: red;"> (*) </span>
+                            </div>
+
+                            <h4>Chọn hình thức thanh toán:</h4>
+                            <h5 style="font-weight: bold; margin-top: 15px;"> @Html.RadioButton("HinhThucThanhToan", "nhanhang") Thanh toán khi nhận hàng  @Html.RadioButton("HinhThucThanhToan", "momo") Thanh toán bằng MoMo</h5>
+                            
+
+
+                            <div class="nhanhang anClass billInfo" style="font-size: 15px;">
+
+
+                                <div class="d-flex mt-3" style="display:flex; margin: 4px;">
+                                    <label style="margin-right: 10px;">Họ và tên:</label>
+                                    <p>@kh.TENKH</p>
+                                </div>
+
+                                <div class="d-flex" style="display: flex; margin: 4px;">
+                                    <label style="margin-right: 10px;">Ngày đặt hàng:</label>
+                                    <p>@DateTime.Now</p>
+                                </div>
+                                
+                                <div class="d-flex" style="display: flex; margin: 4px;">
+                                    <label style="margin-right: 10px;">Email:</label>
+                                    <p>@kh.EMAIL</p>
+                                </div>
+                                <div class="d-flex" style="display: flex; margin: 4px;">
+                                    <label style="margin-right: 10px;">Số điện thoại:</label>
+                                    <p>@kh.SDT</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" type="submit" id="btnDatHang" value="checkOut" style="font-size: 18px;">Xác nhận đặt hàng</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="anClass momo thanh-toan-momo">
+
+                                @*<button class="btn btn-success" type="submit" id="btnDatHang" value="checkOut" style="font-size: 18px;" onclick="xacNhan();">Xác nhận đặt hàng</button>
+                                  <script>
+                                  function xacNhan() {
+                                  location.href = "@Url.Action("XacNhanDonHangMoMo", "Home")";
+                                   }
+                                   </script>*@
+                                @*<a class="btn btn-success" href="@Url.Action("XacNhanDonHangMoMo", "Home")" style="font-weight:600; color: #333; height: 40px; font-size: 16px; border-radius: 10px;">Tiếp tục </a>*@
+                                <div class="col-md-12">
+                                    @*<a class="btn btn-success" href="/Home/XacNhanDonHangMoMo">Tiếp tục</a>*@
+                                   <button class="btn btn-primary" type="submit" style="font-size: 18px; margin-top: 28px;">Click để tiếp tục</button>
+                                        </div>
+                                    </div>
+
+
+                                }
+                            </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h1> Chưa có sản phẩm nào trong giỏ </h1>
+        }

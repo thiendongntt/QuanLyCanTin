@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a6a032f3d5934994bdefca49eaf1befe" Name="Diagram1">
+        <EntityTypeShape EntityType="QUANLYCANTINModel.CHAMCONG" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.CHITIETHOADON" Width="1.5" PointX="10" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.CHUCVU" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.HOADON" Width="1.5" PointX="7.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.KHACHHANG" Width="1.5" PointX="5.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.NHACUNGCAP" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.NHANVIEN" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.NHAPHANG" Width="1.5" PointX="10" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.SANPHAM" Width="1.5" PointX="7.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.TAIKHOAN" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QUANLYCANTINModel.TRALUONG" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="QUANLYCANTINModel.FK__CHAMCONG__IDNV__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCANTINModel.FK__CHITIETHOA__IDHD__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCANTINModel.FK__CHITIETHOA__IDSP__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCANTINModel.FK__NHANVIEN__IDCV__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCANTINModel.FK__TAIKHOAN__IDCV__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCANTINModel.FK__HOADON__IDKH__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCANTINModel.FK__NHAPHANG__IDNCC__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCANTINModel.FK__TRALUONG__IDNV__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="QUANLYCANTINModel.FK__NHAPHANG__IDSP__49C3F6B7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

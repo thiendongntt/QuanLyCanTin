@@ -1,0 +1,18 @@
+D:\QuanLyCanTin\DAO\bin\Debug\DAO.dll
+D:\QuanLyCanTin\DAO\bin\Debug\DAO.pdb
+D:\QuanLyCanTin\DAO\obj\Debug\DAO.csprojAssemblyReference.cache
+D:\QuanLyCanTin\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+D:\QuanLyCanTin\DAO\obj\Debug\DAO.dll
+D:\QuanLyCanTin\DAO\obj\Debug\DAO.pdb
+D:\QuanLyCanTin\DAO\bin\Debug\DTO.dll
+D:\QuanLyCanTin\DAO\bin\Debug\DTO.pdb
+D:\QuanLyCanTin\DAO\obj\Debug\DAO.csproj.CopyComplete
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\DAO\bin\Debug\DAO.dll
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\DAO\bin\Debug\DAO.pdb
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\DAO\bin\Debug\DTO.dll
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\DAO\bin\Debug\DTO.pdb
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\DAO\obj\Debug\DAO.csprojAssemblyReference.cache
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\DAO\obj\Debug\DAO.csproj.CopyComplete
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\DAO\obj\Debug\DAO.dll
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\DAO\obj\Debug\DAO.pdb

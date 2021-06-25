@@ -1,0 +1,102 @@
+﻿@model PagedList.IPagedList<WebQuanLyCanTin.Models.SANPHAM>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "SanPhamPartial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row san-pham">
+    <div class="col-md-3 right-sanpham">
+        <nav>
+            <ul class="menuProduct">
+                <li>
+                    <a href="@Url.Action("SanPhamPartial", "Product")" class="tpnam_btn mb-0 listAll">Danh mục sản phẩm</a>
+                    <ul class="tpnam_show">
+                        <li class="list-item"> <a href="/Product/DoAnSang">Đồ ăn sáng </a> </li>
+                        <li class="list-item"> <a href="/Product/DoUong">Đồ uống</a> </li>
+                        <li class="list-item"> <a href="/Product/DoAnVat">Đồ ăn vặt</a> </li>
+                        <li class="list-item"> <a href="/Product/Khac">Khác</a> </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="col-md-9">
+        <div class="product-featured clearfix">
+            <div class="row">
+
+                @using (Html.BeginForm("timKiemSanPham", "Product"))
+                {
+                    <div class="tim-kiem-san-pham" data-aos="fade-left">
+                        <div class="group">
+                            <input id="TimKiem" placeholder="Tìm kiếm" type="text" name="tenSP" autocomplete="off" required>
+                            @*<label id="find">Tìm kiếm sản phẩm</label>*@
+                        </div>
+                        <button class="btnTimKiem btn000 ml-3">Tìm kiếm</button>
+                    </div>
+                }
+
+            </div>
+            <div class="row">
+
+                <div class="col-sm-12 layout-san-pham">
+                    <div class="box-right">
+
+                        <ul class="product-list">
+                            @foreach (var item in Model)
+                            {
+
+                                <li class="col-sm-4 product-item">
+                                    <div class="left-block">
+                                        <a>
+                                            <img class="img-responsive" alt="product"
+                                                 src="@Url.Content(item.HINHANHSP)" style="width: 200px; height: 250px;" />
+                                        </a>
+
+                                        <div class="quick-view">
+                                            <a title="Add to my wishlist" class="heart" href="#"></a>
+                                            <a title="Add to compare" class="compare" href="#"></a>
+                                            <a title="Quick view" href="@Url.Content(item.HINHANHSP)" class="search fancybox-button"></a>
+                                        </div>
+                                        <div class="add-to-cart">
+                                            @if (item.SLCONLAI > 0)
+                                            {
+                                                using (Html.BeginForm("ThemGioHang", "Product", new { maSP = item.IDSP }, FormMethod.Post))
+                                                {
+
+                                                    <button type="submit">
+                                                        Thêm vào giỏ hàng
+                                                    </button>
+                                                }
+
+                                            }
+                                        </div>
+                                        <div class="bestseller"></div>
+                                    </div>
+                                    <div class="right-block">
+                                        <h5 class="product-name"><a href="#"> @(WebQuanLyCanTin.Controllers.HomeController.getString(item.TENSP))</a></h5>
+
+                                        <div class="content_price">
+                                            <span class="price product-price"><span style="color: black">Price:</span> @(string.Format("{0:#, ##0}",item.GIA)) VND</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.PagedListPager(Model, page => Url.Action("SanPhamPartial", new { page }))
+    </div>
+    </div>
+
+
+
+
+

@@ -1,0 +1,108 @@
+﻿
+@model IEnumerable<WebQuanLyCanTin.Models.GioHang>
+@{
+    ViewBag.Title = "ReturnUrl";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (@ViewBag.TongSanPham > 0 && @ViewBag.ThanhToan == "Da thanh toan")
+{
+    <div class="row dat-hang">
+
+        <div class="col-md-7 chi-tiet-san-pham">
+            <h2 class="font-weight-bold">CHI TIẾT ĐƠN HÀNG</h2>
+            <div class="detailOrder">
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <p class="font-weight-bold">Tổng sản phẩm</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>@ViewBag.TongSanPham</p>
+                    </div>
+                </div>
+                @foreach (var sanPham in Model)
+                {
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="font-weight-bold">@sanPham.name</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>@String.Format("{0:0,0}", sanPham.price * sanPham.quantity) VNĐ</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <a class="btn btn-success" href="/Product/SanPhamPartial" style="font-weight:600; color: #333; height: 40px; font-size: 16px; border-radius: 10px;">Tiếp tục mua hàng</a>
+
+        </div>
+      
+        <div class="col-md-5 chi-tiet-san-pham">
+            <div class="tks" style="float: right; border: 1px solid red; padding: 0px 10px;">
+                <h2 class="font-weight-bold">ĐƠN HÀNG ĐANG ĐƯỢC GIAO</h2>
+                <ul>
+                    <li>Mã đơn hàng: <span class="font-weight-bold">@Session["MAHOADON"] </span></li>
+                    <li>Ngày đặt hàng: <span class="font-weight-bold">@Session["NGAYLAP"] </span></li>
+                    <li>Tổng cộng: <span class="font-weight-bold">@ViewBag.TongTien VNĐ </span></li>
+                    <li>Trạng thái: <span class="font-weight-bold text-danger"> @Session["THANHTOAN"] </span></li>
+                    <li>Phòng nhận hàng: <span class="font-weight-bold text-danger">@Session["DIACHI"] </span></li>
+                </ul>
+            </div>
+        </div>
+
+       
+    </div>
+
+
+}
+
+else
+{
+    <div class="row dat-hang">
+
+        <div class="col-md-7 chi-tiet-san-pham">
+            <h2 class="font-weight-bold">CHI TIẾT ĐƠN HÀNG</h2>
+            <div class="detailOrder">
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <p class="font-weight-bold">Tổng sản phẩm</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>@ViewBag.TongSanPham</p>
+                    </div>
+                </div>
+                @foreach (var sanPham in Model)
+                {
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="font-weight-bold">@sanPham.name</p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>@String.Format("{0:0,0}", sanPham.price * sanPham.quantity) VNĐ</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <a class="btn btn-success" href="/Home/ThanhToan" style="font-weight:600; color: #333; height: 40px; font-size: 16px; border-radius: 10px;">Thanh toán lại</a>
+        </div>
+        <div class="col-md-5 chi-tiet-san-pham">
+            <div class="tks" style="float: right; border: 1px solid red; padding: 0px 10px;">
+                <h2 class="font-weight-bold" style="color: red;">ĐƠN HÀNG THANH TOÁN THẤT BẠI</h2>
+                <ul>
+                    <li>Mã đơn hàng: <span class="font-weight-bold">@Session["MAHOADON"] </span></li>
+                    <li>Ngày đặt hàng: <span class="font-weight-bold">@Session["NGAYLAP"] </span></li>
+                    <li>Tổng cộng: <span class="font-weight-bold">@ViewBag.TongTien VNĐ </span></li>
+                    <li>Phòng nhận hàng: <span class="font-weight-bold text-danger">@Session["DIACHI"] </span></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+
+
+}
+
+
+
+

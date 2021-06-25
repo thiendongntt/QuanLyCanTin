@@ -1,0 +1,89 @@
+﻿@using WebQuanLyCanTin.Models
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .input-tex.qty.text.product_qty.x-g-h {
+        border: 1px solid;
+    }
+    input[type=number]::-webkit-inner-spin-button {
+        opacity: 1;
+        border: 1px solid;
+    }
+</style>
+@if (Session["GioHang"] != null && ViewBag.TongSanPham > 0)
+{
+    <div class="columns-container">
+        <div class="container" id="columns">
+            <!-- page heading-->
+            <h2 class="page-heading">
+                <span class="page-heading-title">Giỏ hàng của bạn</span>
+            </h2>
+            <!-- ../page heading-->
+            <div class="page-content page-order">
+
+                <div class="heading-counter warning">
+                    <span class="fa fa-shopping-cart"></span> Sản phẩm trong giỏ:
+                    <span id="count-cart" style="font-weight: bold">@ViewBag.TongSanPham</span> <span> sản phẩm</span>
+                </div>
+                <div class="order-detail-content">
+                    <table class="table table-bordered table-responsive cart_summary">
+                        <thead>
+                            <tr>
+                            
+                                <th>Tên sản phẩm</th>
+                                <th>Hình ảnh</th>
+                                <th>Đơn giá </th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                                <th class="action" title="Xóa hết giỏ hàng" > <a href="@Url.Action("XoaHetGioHang", "Home")"><i class="fa fa-trash-o">Xóa hết</i></a> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (GioHang sanPham in (List<GioHang>)Session["GioHang"])
+                            {
+                                <tr>
+
+                                    <th>@sanPham.name</th>
+                                    <th><img src="@Url.Content(sanPham.SanPham.HINHANHSP)" style="width: 200px"  /></th>
+                                    <th>@sanPham.price</th>
+
+                                    <th>
+                                        @using (Html.BeginForm("CapNhatSoLuongXemGH", "Home"))
+                                        {
+
+                                            <input type="hidden" value="@sanPham.SanPham.IDSP" name="MaSP" />
+                                            @*<input class="bt_minus" type="button" value="-" data-product-code="BB0927">*@
+                                            <input type="number" name="SoLuong" value="@sanPham.quantity" title="Qty" class="input-text qty text product_qty" style="border: 1px solid; height: 30px;" size="4" min="1" max="100">
+                                            <input class="bt_plus" type="submit" value="Update" data-product-code="BB0927" style="width: 90px; height: 30px; border-radius:10px; background-color: #ccc;">
+                                        }
+                                    </th>
+                                    <th>@(sanPham.quantity * sanPham.price)</th>
+                                    <th class="action" title="Xóa"> <a href="@Url.Action("XoaGioHangXemGH", "Home", new {maSP = sanPham.SanPham.IDSP})"></a> </th>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" rowspan="1"></td>
+                                <td colspan="3"><strong>Tổng tiền</strong></td>
+                                <td colspan="1" id="total_price" style="font-weight: bold; color: #e84d1c; font-size: 20px;">@ViewBag.TongTien</td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="cart_navigation">
+                        <a class="prev-btn" href="/Home/Index">Tiếp tục mua hàng</a>
+                        <a class="next-btn" href="/Home/DatHang">Đặt hàng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+<h1> Giỏ hàng trống</h1>
+}
+

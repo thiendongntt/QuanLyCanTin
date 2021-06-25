@@ -1,0 +1,22 @@
+D:\QuanLyCanTin\BUS\bin\Debug\BUS.dll
+D:\QuanLyCanTin\BUS\bin\Debug\BUS.pdb
+D:\QuanLyCanTin\BUS\obj\Debug\BUS.csprojAssemblyReference.cache
+D:\QuanLyCanTin\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
+D:\QuanLyCanTin\BUS\obj\Debug\BUS.dll
+D:\QuanLyCanTin\BUS\obj\Debug\BUS.pdb
+D:\QuanLyCanTin\BUS\bin\Debug\DAO.dll
+D:\QuanLyCanTin\BUS\bin\Debug\DTO.dll
+D:\QuanLyCanTin\BUS\bin\Debug\DAO.pdb
+D:\QuanLyCanTin\BUS\bin\Debug\DTO.pdb
+D:\QuanLyCanTin\BUS\obj\Debug\BUS.csproj.CopyComplete
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\bin\Debug\BUS.dll
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\bin\Debug\BUS.pdb
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\bin\Debug\DAO.dll
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\bin\Debug\DTO.dll
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\bin\Debug\DAO.pdb
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\bin\Debug\DTO.pdb
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\obj\Debug\BUS.csprojAssemblyReference.cache
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\obj\Debug\BUS.csproj.CopyComplete
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\obj\Debug\BUS.dll
+C:\Users\THIEN DONG\OneDrive\Desktop\AppCanLyCanTin\QuanLyCanTin\BUS\obj\Debug\BUS.pdb

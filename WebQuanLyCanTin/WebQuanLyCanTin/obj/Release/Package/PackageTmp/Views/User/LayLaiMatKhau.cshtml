@@ -1,0 +1,28 @@
+﻿@model WebQuanLyCanTin.Models.KHACHHANG
+@{
+    ViewBag.Title = "LayLaiMatKhau";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row dat-hang">
+@using (Html.BeginForm("LayLaiMatKhau", "User", FormMethod.Post))
+{
+    <div class="form-group d-flex align-items-center dang-ky">
+        <label for="email" style="font-size: 20px; margin: 0px auto;">Nhập email cần lấy lại mật khẩu:</label>
+        <div class="flex-column d-flex">
+            <div> @Html.TextBoxFor(model => model.LAYLAIMK, new { autocomplete = "off", @placeholder = "Email của bạn", @class = "doudle-outline" }) </div>
+            <div>@Html.ValidationMessageFor(model => model.LAYLAIMK, "", new { @class = "text-danger" })</div>
+
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <label style="width:123px"></label>
+
+        <h4 class="thong-bao-loi" style="color: red;">@ViewBag.ThongBaoLoi </h4>
+        <h4 class="thong-bao-loi" style="color: green;">@ViewBag.ThongBaoKhongLoi </h4>
+
+        <button class="btn btn-info" style="width:400px">Lấy lại mật khẩu</button>
+    </div>
+}
+</div>

@@ -1,0 +1,92 @@
+﻿@model WebQuanLyCanTin.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="~/style.css" rel="stylesheet" />
+    <title>Login</title>
+</head>
+<body>
+    <style>
+        .form-group.layout-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .d-flex.w-100.layout-login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modalRight {
+            width: 1140px;
+            margin: 15px;
+            background: rgb(255, 255, 255);
+        }
+        .modalRight input {
+            border: 1px solid rgb(56 36 36);
+        }
+    </style>
+    <div class="d-flex w-100 layout-login">
+
+        <div class="modalRight" style="background-color: rgba(0,0,0,0.1);">
+            @using (Html.BeginForm("DangNhap", "User", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true){
+
+                    <div class="form-group layout-login">
+                        @*<label for="tenTaiKhoan">Tài khoản</label>*@
+                        <div class="flex-column d-flex">
+                            <div> <strong>Tài khoản</strong> </div>
+                            @Html.TextBoxFor(model => model.TAIKHOAN, new { autocomplete = "off", @placeholder = "Nhập tài khoản", @id = "tenTaiKhoan" })
+                            <div> @Html.ValidationMessageFor(model => model.TAIKHOAN, "", new { @class = "text-danger" }) </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group layout-login">
+                        @*<label for="matKhau">Mật khẩu</label>*@
+                        <div class="flex-column d-flex">
+                            <div> <strong>Mật khẩu</strong> </div>
+                            <div style="display: flex; ">
+                                @Html.PasswordFor(model => model.MATKHAU, new { autocomplete = "off", @placeholder = "Nhập mật khẩu", @id = "matKhau" })
+
+                            </div>
+
+
+                            <div>@Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })</div>
+                        </div>
+                    </div>
+                    <div class="giao-dien-login" style="margin-left: 116px">
+
+                    <div> <input type="checkbox" id="showPass" style="height: 16px; width: 16px;" title="Hiện mật khẩu" /> Hiện mật khẩu </div>  
+                    <p class="text-danger mt-3">@ViewBag.ThongBao</p>
+                    <button class="btn btn-primary mr-3">Đăng nhập</button>
+                    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#popupLogin" onclick="chuyenDangKy()">
+                        @*<a href="/User/DangKy">Tạo tài khoản </a>*@
+                        Quên mật khẩu
+                    </button>
+                    </div>
+
+                    <script>
+                        function chuyenDangKy() {
+                            location.href = "/User/LayLaiMatKhau";
+                        }
+                    </script>
+                }
+
+            }
+        </div>
+    </div>
+</body>
+</html>
+

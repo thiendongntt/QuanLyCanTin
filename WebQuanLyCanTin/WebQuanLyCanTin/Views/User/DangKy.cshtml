@@ -1,0 +1,113 @@
+﻿@model WebQuanLyCanTin.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="~/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div id="form-register">
+            @using (Html.BeginForm("DangKy", "User", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true){
+                    <div class="style-register">
+
+                        <div class="form-group d-flex align-items-center dang-ky">
+
+                            <label for="tenKH">Họ tên</label>
+                            <div class="flex-column d-flex">
+                                @Html.TextBoxFor(model => model.TENKH, new { autocomplete = "off", @placeholder = "Nhập họ tên", @class = "doudle-outline" })
+                                <div> @Html.ValidationMessageFor(model => model.TENKH, "", new { @class = "text-danger" }) </div> 
+                               
+                            </div>
+
+                        </div>
+                        <div class="form-group d-flex align-items-center dang-ky" style="margin-bottom:8px">
+                            <label for="ngaySinh">Ngày sinh<br /><span style="font-size:13px" class="text-muted">(mm/dd/yyyy)</span></label>
+                            <div class="flex-column d-flex">
+                                @Html.TextBoxFor(model => model.NGAYSINH, new { autocomplete = "off", @placeholder = "Nhập ngày sinh", @class = "doudle-outline" })
+                                <div>  @Html.ValidationMessageFor(model => model.NGAYSINH, "", new { @class = "text-danger" })</div>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex align-items-center dang-ky">
+                            <label for="gioiTinh">Giới tính</label>
+                            <div class="flex-column d-flex">
+                                @Html.DropDownListFor(model => model.GIOITINH, new List<SelectListItem> { new SelectListItem { Text = "Nam", Value = "Nam", Selected = true }, new SelectListItem { Text = "Nữ", Value = "Nữ" } }, new { Name = "gioiTinh", @id = "gioiTinh", @class = "form-control w-100" })
+                                <div>@Html.ValidationMessageFor(model => model.GIOITINH, "", new { @class = "text-danger" })</div> 
+                            </div>
+                        </div>
+                        <div class="form-group d-flex align-items-center dang-ky">
+                            <label for="taiKhoan">Tên tài khoản</label>
+                            <div class="flex-column d-flex">
+                                @Html.TextBoxFor(model => model.TAIKHOAN, new { autocomplete = "off", @placeholder = "Nhập tài khoản", @class = "doudle-outline" })
+                                <div>@Html.ValidationMessageFor(model => model.TAIKHOAN, "", new { @class = "text-danger" })</div>  
+                                <class> <span style="color: red;"> @ViewBag.ThongBao</span> </class>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex align-items-center dang-ky">
+                            <label for="matKhau">Mật khẩu</label>
+                            <div class="flex-column d-flex">
+                                @Html.PasswordFor(model => model.MATKHAU, new { autocomplete = "off", @placeholder = "Nhập mật khẩu", @class = "doudle-outline" })
+                                <div>@Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })</div>   
+                            </div>
+                        </div>
+                        <div class="form-group d-flex align-items-center dang-ky">
+                            <label for="reMatKhau">Nhập lại</label>
+                            <div class="flex-column d-flex">
+                                @Html.PasswordFor(model => model.NHAPLAIMK, new { autocomplete = "off", @placeholder = "Xác nhận mật khẩu", @class = "doudle-outline" })
+                                <div> @Html.ValidationMessageFor(model => model.NHAPLAIMK, "", new { @class = "text-danger" })</div> 
+                            </div>
+                        </div>
+                        <div class="form-group d-flex align-items-center dang-ky">
+                            <label for="diaChi">Địa chỉ</label>
+                            <div class="flex-column d-flex">
+                                @Html.TextBoxFor(model => model.DIACHI, new { autocomplete = "off", @placeholder = "Nhập địa chỉ", @class = "doudle-outline" })
+                                <div>@Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })</div>    
+                            </div>
+                        </div>
+                        <div class="form-group d-flex align-items-center dang-ky">
+                            <label for="email">Email</label>
+                            <div class="flex-column d-flex">
+                                @Html.TextBoxFor(model => model.EMAIL, new { autocomplete = "off", @placeholder = "Email của bạn", @class = "doudle-outline" })
+                                <div>@Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })</div> 
+
+                            
+                            </div>
+                        </div>
+                        <div class="form-group d-flex align-items-center dang-ky">
+                            <label for="soDienThoai">Số điện thoại</label>
+                            <div class="flex-column d-flex">
+                                @Html.TextBoxFor(model => model.SDT, new { autocomplete = "off", @placeholder = "Nhập số điện thoại", @class = "doudle-outline" })
+                                <div> @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })</div> 
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <label style="width:123px"></label>
+                            <button class="btn btn-success" style="width:400px">Đăng kí</button>
+                        </div>
+                        <div class="mt-3">
+                            <label style="width:137px"></label>
+                            <span style="font-size:13px;"><label style="width:137px"></label>  <span class="text-primary"></span>.</span>
+                        </div>
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+</body>
+</html>
+
+

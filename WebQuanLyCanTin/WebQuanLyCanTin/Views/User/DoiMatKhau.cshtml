@@ -1,0 +1,39 @@
+﻿@model WebQuanLyCanTin.Models.KHACHHANG
+@{
+    ViewBag.Title = "DoiMatKhau";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row dat-hang">
+    @using (Html.BeginForm())
+    {
+        <div class="form-group d-flex align-items-center dang-ky">
+            <label for="email" style="font-size: 20px; margin: 0px auto;">Mật khẩu cũ:</label>
+            <div class="flex-column d-flex">
+                <div> @Html.PasswordFor(model => model.MATKHAUCU, new { autocomplete = "off", @placeholder = "Mật khẩu cũ", @class = "doudle-outline" }) </div>
+                <div>@Html.ValidationMessageFor(model => model.MATKHAUCU, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+        <div class="form-group d-flex align-items-center dang-ky">
+            <label for="email" style="font-size: 20px; margin: 0px auto;">Mật khẩu mới:</label>
+            <div class="flex-column d-flex">
+                <div> @Html.PasswordFor(model => model.MATKHAUMOI, new { autocomplete = "off", @placeholder = "Mật khẩu mới", @class = "doudle-outline" }) </div>
+                <div>@Html.ValidationMessageFor(model => model.MATKHAUMOI, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+        <div class="form-group d-flex align-items-center dang-ky">
+            <label for="email" style="font-size: 20px; margin: 0px auto;">Nhập lại:</label>
+            <div class="flex-column d-flex">
+                <div> @Html.PasswordFor(model => model.NHAPLAIMKMOI, new { autocomplete = "off", @placeholder = "Nhập lại nật khẩu mới", @class = "doudle-outline" }) </div>
+                <div>@Html.ValidationMessageFor(model => model.NHAPLAIMKMOI, "", new { @class = "text-danger" })</div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <label style="width:123px"></label>
+            <button class="btn btn-info" style="width:400px">Xác nhận</button>
+            <h4 class="thong-bao-loi" style="color: red;">@ViewBag.ThongBaoLoi </h4>
+            <h4 class="thong-bao-loi" style="color: green;">@ViewBag.ThongBaoKhongLoi </h4>
+        </div>
+    }
+
+</div>

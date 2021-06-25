@@ -1,0 +1,106 @@
+﻿
+@model IEnumerable<WebQuanLyCanTin.Models.GioHang>
+
+@{
+    ViewBag.Title = "XacNhanDonHangMoMo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (@ViewBag.TongSanPham > 0)
+{
+    <div class="row dat-hang">
+
+        <div class="col-md-7">
+            <div class="billInfo">
+                <h3>THÔNG TIN NHẬN HÀNG</h3>
+                @{
+                    WebQuanLyCanTin.Models.KHACHHANG kh = (WebQuanLyCanTin.Models.KHACHHANG)Session["TaiKhoan"];
+                }
+                @using (Html.BeginForm())
+                {
+
+                    <div class="d-flex mt-3" style="display:flex; margin: 10px;">
+                        <label style="margin-right: 10px;">Họ và tên:</label>
+                        <p>@kh.TENKH</p>
+                    </div>
+
+                    <div class="d-flex" style="display: flex; margin: 10px;">
+                        <label style="margin-right: 10px;">Thời gian đặt hàng:</label>
+                        <p>@DateTime.Now</p>
+                    </div>
+                    <div class="d-flex" style="display: flex; margin: 10px;">
+                        <label style="margin-right: 10px;">Phòng nhận hàng:</label>
+                        <p>@Session["DIACHI"]</p>
+                    </div>
+
+                    <div class="d-flex" style="display: flex; margin: 10px;">
+                        <label style="margin-right: 10px;">Email:</label>
+                        <p>@kh.EMAIL</p>
+                    </div>
+                    <div class="d-flex" style="display: flex; margin: 10px;">
+                        <label style="margin-right: 10px;">Số điện thoại:</label>
+                        <p>@kh.SDT</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn btn-success" href="/Home/ThanhToan" style="font-weight:600; color: #333; height: 40px; font-size: 16px; border-radius: 10px;">Xác nhận</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-md-5 p-4" style="border: 1px solid #808080">
+            <div class="order">
+                <h3>ĐƠN HÀNG CỦA BẠN</h3>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">Tổng sản phẩm</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>@ViewBag.TongSanPham</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">Hình thức thanh toán</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="text-muted">Thanh toán bằng Momo</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="font-weight-bold">Tổng tiền</p>
+                    </div>
+                    <div class="col-md-6 color-red">
+                        <p>@String.Format("{0:0,0}", @ViewBag.TongTien) VNĐ</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" style="margin-top:15px;">
+        <div class="col-md-12">
+            @if (TempData["ERROR"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">ERROR:</span>
+                    HỆ THỐNG MOMO ĐANG BẢO TRÌ, VUI LÒNG THỬ LẠI SAU
+                </div>
+            }
+        </div>
+    </div>
+
+
+}
+
+else
+{
+    <h1> Bạn không thể thanh quá qua Momo nếu chưa đặt hàng...</h1>
+}
+
+
